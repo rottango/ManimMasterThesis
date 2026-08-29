@@ -22,9 +22,10 @@ from manim import *
 
 class openingSequence(Scene):
     def construct(self):
-        self.basicMovementofNodes(self)
+        Node1, Node2 = self.createNodes()
+        self.basicMovementofNodes(Node1, Node2)
 
-    def basicMovementofNodes(self):
+    def basicMovementofNodes(self, Node1, Node2):
         self.play(Create(Node1), run_time=2.5)
         self.play(Node1.animate.set_fill(BLUE, opacity=0.7), run_time=1)
         # "Imagine, this is a robot"
@@ -40,7 +41,7 @@ class openingSequence(Scene):
         self.play(Node2.animate.set_fill(RED, opacity=0.7), run_time=1)
         # "And this is a second robot."
 
-        self.wait(2 )
+        self.wait(2)
 
         self.play(
             Node2.animate.to_edge(UP, buff=1),
@@ -58,5 +59,4 @@ class openingSequence(Scene):
         )
 
         Node2 = Circle(radius=1.5, color=RED)
-
-        self.wait(1)
+        return Node1, Node2
