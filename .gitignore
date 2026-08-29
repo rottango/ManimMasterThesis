@@ -2,7 +2,7 @@
 *.d
 .venv/
 .vscode/
-
+media/
 # Compiled Object files
 *.slo
 *.lo
