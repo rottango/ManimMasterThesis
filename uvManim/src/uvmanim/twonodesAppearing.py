@@ -24,6 +24,7 @@ class openingSequence(Scene):
     def construct(self):
         Node1, Node2 = self.createNodes()
         self.basicMovementofNodes(Node1, Node2)
+        self.createLines(Node1,Node2)
 
     def basicMovementofNodes(self, Node1, Node2):
         self.play(Create(Node1), run_time=2.5)
@@ -51,6 +52,17 @@ class openingSequence(Scene):
         )
         # "In 2D space, they both have their orientations and angels"
         # "But how can they locate each other, if neither of them know of the others existence?"
+
+    def createLines(self, Node1, Node2):
+        xAxisOfNode1 = Arrow(start=Node1.get_center(), end=Node1.get_center()+RIGHT*2, color=RED)
+        xAxisOfNode2 = Arrow(start=Node2.get_center(), end=Node2.get_center()+RIGHT*2, color=RED)
+
+        yAxisOfNode1 = Arrow(start=Node1.get_center(), end=Node1.get_center()+UP*2, color=BLUE)
+        yAxisOfNode2 = Arrow(start=Node2.get_center(), end=Node2.get_center()+UP*2, color=BLUE)
+        self.play(Create(xAxisOfNode1), Create(yAxisOfNode1))
+        self.play(Create(xAxisOfNode2), Create(yAxisOfNode2))
+        self.wait(10)
+
 
     def createNodes(self):
         Node1 = Circle(
